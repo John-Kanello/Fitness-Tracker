@@ -20,6 +20,7 @@ public class FitnessTracker {
     private String activity;
     private int duration;
     private int calories;
+    @Column(name = "upload_date")
     private LocalDateTime uploadDate;
 
     public FitnessTracker(String username, String activity, int duration, int calories, LocalDateTime uploadDate) {

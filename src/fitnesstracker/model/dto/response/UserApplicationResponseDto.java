@@ -1,6 +1,9 @@
 package fitnesstracker.model.dto.response;
 
-public record   UserApplicationResponseDto(
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record UserApplicationResponseDto(
         String name,
+        @JsonProperty(value = "apikey")
         String apiKey
 ) {}

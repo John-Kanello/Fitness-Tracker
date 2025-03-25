@@ -3,7 +3,7 @@ package fitnesstracker.controller;
 import fitnesstracker.model.dto.request.FitnessAppUserRequestDto;
 import fitnesstracker.model.dto.response.FitnessAppUserResponseDto;
 import fitnesstracker.model.entity.FitnessAppUser;
-import fitnesstracker.service.FitnessAppUserMapper;
+import fitnesstracker.util.mapper.FitnessAppUserMapper;
 import fitnesstracker.service.FitnessAppUserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

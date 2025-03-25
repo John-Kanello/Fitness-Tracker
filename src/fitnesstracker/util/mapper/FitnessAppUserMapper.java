@@ -1,9 +1,8 @@
-package fitnesstracker.service;
+package fitnesstracker.util.mapper;
 
 import fitnesstracker.model.dto.request.FitnessAppUserRequestDto;
 import fitnesstracker.model.dto.response.FitnessAppUserResponseDto;
 import fitnesstracker.model.entity.FitnessAppUser;
-import fitnesstracker.util.mapper.Mapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 

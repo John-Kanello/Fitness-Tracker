@@ -20,6 +20,7 @@ public class FitnessAppUser {
     private String email;
     private String password;
     @OneToMany(mappedBy = "fitnessAppUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OrderBy("registrationDate DESC")
     private List<UserApplication> applications;
 
     public FitnessAppUser(String email, String password) {

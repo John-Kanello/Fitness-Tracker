@@ -1,6 +1,7 @@
 package fitnesstracker.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "fitness_user_applications")
+@Table(name = "user_applications")
 public class UserApplication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +21,7 @@ public class UserApplication {
     @Column(unique = true)
     private String name;
     private String description;
+    @JsonProperty(value = "apikey")
     @Column(unique = true)
     private String apiKey;
     @JsonIgnore

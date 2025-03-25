@@ -3,6 +3,8 @@ package fitnesstracker.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -17,6 +19,8 @@ public class FitnessAppUser {
     @Column(unique = true)
     private String email;
     private String password;
+    @OneToMany(mappedBy = "fitnessAppUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<UserApplication> applications;
 
     public FitnessAppUser(String email, String password) {
         this.email = email;

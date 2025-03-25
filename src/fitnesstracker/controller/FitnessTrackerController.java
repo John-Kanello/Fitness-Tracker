@@ -5,6 +5,7 @@ import fitnesstracker.model.dto.response.FitnessTrackerResponseDto;
 import fitnesstracker.model.entity.FitnessTracker;
 import fitnesstracker.service.FitnessTrackerService;
 import fitnesstracker.util.mapper.FitnessTrackerMapper;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class FitnessTrackerController {
     }
 
     @PostMapping
-    public ResponseEntity<?> postTracker(@RequestBody FitnessTrackerRequestDto fitnessTrackerRequestDto) {
+    public ResponseEntity<?> postTracker(@Valid @RequestBody FitnessTrackerRequestDto fitnessTrackerRequestDto) {
         FitnessTracker fitnessTracker = fitnessTrackerMapper.toEntity(fitnessTrackerRequestDto);
         fitnessTrackerService.save(fitnessTracker);
         return new ResponseEntity<>(HttpStatus.CREATED);

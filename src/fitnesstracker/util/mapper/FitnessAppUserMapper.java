@@ -26,7 +26,8 @@ public class FitnessAppUserMapper implements Mapper<FitnessAppUser, FitnessAppUs
     public FitnessAppUserResponseDto toDtoResponse(FitnessAppUser entity) {
         return new FitnessAppUserResponseDto(
                 entity.getId(),
-                entity.getEmail()
+                entity.getEmail(),
+                entity.getApplications()
         );
     }
 }

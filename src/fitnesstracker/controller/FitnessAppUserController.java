@@ -21,7 +21,8 @@ public class FitnessAppUserController {
     private final FitnessAppUserService fitnessAppUserService;
     private final FitnessAppUserMapper fitnessAppUserMapper;
 
-    public FitnessAppUserController(FitnessAppUserService fitnessAppUserService, FitnessAppUserMapper fitnessAppUserMapper) {
+    public FitnessAppUserController(FitnessAppUserService fitnessAppUserService,
+                                    FitnessAppUserMapper fitnessAppUserMapper) {
         this.fitnessAppUserService = fitnessAppUserService;
         this.fitnessAppUserMapper = fitnessAppUserMapper;
     }

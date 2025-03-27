@@ -5,5 +5,6 @@ public record FitnessTrackerResponseDto(
         String username,
         String activity,
         int duration,
-        int calories
+        int calories,
+        String application
 ) {}

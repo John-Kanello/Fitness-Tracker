@@ -12,11 +12,12 @@ public class FitnessTrackerMapper implements Mapper<FitnessTracker, FitnessTrack
     @Override
     public FitnessTracker toEntity(FitnessTrackerRequestDto dtoRequest) {
         return new FitnessTracker(
-                dtoRequest.username(),
-                dtoRequest.activity(),
-                dtoRequest.duration(),
-                dtoRequest.calories(),
-                LocalDateTime.now()
+                dtoRequest.getUsername(),
+                dtoRequest.getActivity(),
+                dtoRequest.getDuration(),
+                dtoRequest.getCalories(),
+                LocalDateTime.now(),
+                dtoRequest.getApplication()
         );
     }
 
@@ -27,7 +28,8 @@ public class FitnessTrackerMapper implements Mapper<FitnessTracker, FitnessTrack
                 entity.getUsername(),
                 entity.getActivity(),
                 entity.getDuration(),
-                entity.getCalories()
+                entity.getCalories(),
+                entity.getApplication()
         );
     }
 }

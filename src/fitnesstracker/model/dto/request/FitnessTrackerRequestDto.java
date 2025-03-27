@@ -2,14 +2,21 @@ package fitnesstracker.model.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-public record FitnessTrackerRequestDto(
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+public class FitnessTrackerRequestDto {
         @NotBlank
-        String username,
+        private String username;
         @NotBlank
-        String activity,
+        private String activity;
         @NotNull
-        Integer duration,
+        private Integer duration;
         @NotNull
-        Integer calories
-) {}
+        private Integer calories;
+        private String application;
+}

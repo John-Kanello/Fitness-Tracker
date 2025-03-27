@@ -22,7 +22,7 @@ public class UserApplication {
     private String name;
     private String description;
     @JsonProperty(value = "apikey")
-    @Column(unique = true)
+    @Column(name = "api_key", unique = true)
     private String apiKey;
     @JsonIgnore
     private LocalDateTime registrationDate;

@@ -1,6 +1,6 @@
 package fitnesstracker.util.mapper;
 
-import fitnesstracker.model.dto.request.FitnessAppUserRequestDto;
+import fitnesstracker.model.dto.request.FitnessAppUserRegistrationRequestDto;
 import fitnesstracker.model.dto.response.FitnessAppUserResponseDto;
 import fitnesstracker.model.entity.FitnessAppUser;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -8,16 +8,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FitnessAppUserMapper implements
-        RequestMapper<FitnessAppUser, FitnessAppUserRequestDto>,
+        RequestMapper<FitnessAppUser, FitnessAppUserRegistrationRequestDto>,
         ResponseMapper<FitnessAppUser, FitnessAppUserResponseDto> {
     private final PasswordEncoder passwordEncoder;
+    private final UserApplicationMapper userApplicationMapper;
 
-    public FitnessAppUserMapper(PasswordEncoder passwordEncoder) {
+    public FitnessAppUserMapper(PasswordEncoder passwordEncoder, UserApplicationMapper userApplicationMapper) {
         this.passwordEncoder = passwordEncoder;
+        this.userApplicationMapper = userApplicationMapper;
     }
 
     @Override
-    public FitnessAppUser toEntity(FitnessAppUserRequestDto dtoRequest) {
+    public FitnessAppUser toEntity(FitnessAppUserRegistrationRequestDto dtoRequest) {
         return new FitnessAppUser(
                 dtoRequest.email(),
                 passwordEncoder.encode(dtoRequest.password())
@@ -29,7 +31,9 @@ public class FitnessAppUserMapper implements
         return new FitnessAppUserResponseDto(
                 entity.getId(),
                 entity.getEmail(),
-                entity.getApplications()
+                entity.getApplications().stream()
+                        .map(userApplicationMapper::toResponseDto)
+                        .toList()
         );
     }
 }

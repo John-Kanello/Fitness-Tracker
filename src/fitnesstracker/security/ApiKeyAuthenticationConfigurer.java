@@ -10,7 +10,7 @@ public class ApiKeyAuthenticationConfigurer extends AbstractHttpConfigurer<ApiKe
     @Override
     public void configure(HttpSecurity builder) {
         AuthenticationManager authenticationManager = builder.getSharedObject(AuthenticationManager.class);
-        builder.addFilterAfter(
+        builder.addFilterBefore(
                 new ApiKeyAuthenticationFilter(authenticationManager),
                 UsernamePasswordAuthenticationFilter.class
         );

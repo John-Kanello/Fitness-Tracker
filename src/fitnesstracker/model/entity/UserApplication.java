@@ -1,7 +1,5 @@
 package fitnesstracker.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,12 +19,9 @@ public class UserApplication {
     @Column(unique = true)
     private String name;
     private String description;
-    @JsonProperty(value = "apikey")
     @Column(name = "api_key", unique = true)
     private String apiKey;
-    @JsonIgnore
     private LocalDateTime registrationDate;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private FitnessAppUser fitnessAppUser;

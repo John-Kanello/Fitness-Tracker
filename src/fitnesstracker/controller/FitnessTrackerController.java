@@ -47,7 +47,7 @@ public class FitnessTrackerController {
         return ResponseEntity.ok()
                 .body(
                         fitnessTrackerService.findAllOrderByUploadDateDescending().stream()
-                                .map(fitnessTrackerMapper::toDtoResponse)
+                                .map(fitnessTrackerMapper::toResponseDto)
                                 .toList()
                 );
     }

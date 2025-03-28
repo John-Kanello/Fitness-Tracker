@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class FitnessTrackerMapper implements Mapper<FitnessTracker, FitnessTrackerRequestDto, FitnessTrackerResponseDto> {
+public class FitnessTrackerMapper implements
+        RequestMapper<FitnessTracker, FitnessTrackerRequestDto>,
+        ResponseMapper<FitnessTracker, FitnessTrackerResponseDto> {
     @Override
     public FitnessTracker toEntity(FitnessTrackerRequestDto dtoRequest) {
         return new FitnessTracker(
@@ -22,7 +24,7 @@ public class FitnessTrackerMapper implements Mapper<FitnessTracker, FitnessTrack
     }
 
     @Override
-    public FitnessTrackerResponseDto toDtoResponse(FitnessTracker entity) {
+    public FitnessTrackerResponseDto toResponseDto(FitnessTracker entity) {
         return new FitnessTrackerResponseDto(
                 entity.getId(),
                 entity.getUsername(),

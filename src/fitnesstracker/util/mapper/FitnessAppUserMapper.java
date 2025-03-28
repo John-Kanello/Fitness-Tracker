@@ -7,7 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FitnessAppUserMapper implements Mapper<FitnessAppUser, FitnessAppUserRequestDto, FitnessAppUserResponseDto> {
+public class FitnessAppUserMapper implements
+        RequestMapper<FitnessAppUser, FitnessAppUserRequestDto>,
+        ResponseMapper<FitnessAppUser, FitnessAppUserResponseDto> {
     private final PasswordEncoder passwordEncoder;
 
     public FitnessAppUserMapper(PasswordEncoder passwordEncoder) {
@@ -23,7 +25,7 @@ public class FitnessAppUserMapper implements Mapper<FitnessAppUser, FitnessAppUs
     }
 
     @Override
-    public FitnessAppUserResponseDto toDtoResponse(FitnessAppUser entity) {
+    public FitnessAppUserResponseDto toResponseDto(FitnessAppUser entity) {
         return new FitnessAppUserResponseDto(
                 entity.getId(),
                 entity.getEmail(),

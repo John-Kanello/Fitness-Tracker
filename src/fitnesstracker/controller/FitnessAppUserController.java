@@ -59,6 +59,6 @@ public class FitnessAppUserController {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         return ResponseEntity.ok()
-                .body(fitnessAppUserMapper.toDtoResponse(currentUser));
+                .body(fitnessAppUserMapper.toResponseDto(currentUser));
     }
 }

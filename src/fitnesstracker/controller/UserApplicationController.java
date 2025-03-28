@@ -45,7 +45,7 @@ public class UserApplicationController {
         fitnessAppUser.getApplications().add(userApplication);
         UserApplication savedUserApplication = userApplicationService.save(userApplication);
         return new ResponseEntity<>(
-                userApplicationMapper.toDtoResponse(savedUserApplication),
+                userApplicationMapper.toResponseDto(savedUserApplication),
                 HttpStatus.CREATED
         );
     }

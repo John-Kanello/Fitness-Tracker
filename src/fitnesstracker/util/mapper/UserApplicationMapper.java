@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Component
-public class UserApplicationMapper implements Mapper<UserApplication, UserApplicationRequestDto, UserApplicationResponseDto> {
+public class UserApplicationMapper implements
+        RequestMapper<UserApplication, UserApplicationRequestDto>,
+        ResponseMapper<UserApplication, UserApplicationResponseDto> {
     @Override
     public UserApplication toEntity(UserApplicationRequestDto dtoRequest) {
         return new UserApplication(
@@ -21,7 +23,7 @@ public class UserApplicationMapper implements Mapper<UserApplication, UserApplic
     }
 
     @Override
-    public UserApplicationResponseDto toDtoResponse(UserApplication entity) {
+    public UserApplicationResponseDto toResponseDto(UserApplication entity) {
         return new UserApplicationResponseDto(
                 entity.getName(),
                 entity.getApiKey()

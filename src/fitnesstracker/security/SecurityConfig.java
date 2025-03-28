@@ -2,6 +2,7 @@ package fitnesstracker.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -21,7 +22,23 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    @Order(1)
+    public SecurityFilterChain apiKeyAuthenticationFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(AbstractHttpConfigurer::disable)
+                .securityMatcher("/api/tracker/**")
+                .authorizeHttpRequests(matcherRegistry -> matcherRegistry
+                        .anyRequest().authenticated())
+                .with(new ApiKeyAuthenticationConfigurer(), Customizer.withDefaults())
+                .authenticationProvider(apiKeyAuthenticationProvider)
+                .sessionManagement(sessions -> sessions
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .build();
+    }
+
+    @Bean
+    @Order(2)
+    public SecurityFilterChain basicAuthenticationFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
@@ -31,8 +48,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/developers/signup").permitAll()
                         .anyRequest().authenticated()
                 )
-                .with(new ApiKeyAuthenticationConfigurer(), Customizer.withDefaults())
-                .authenticationProvider(apiKeyAuthenticationProvider)
                 .userDetailsService(fitnessAppUserDetailsService)
                 .sessionManagement(sessions -> sessions
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // no session

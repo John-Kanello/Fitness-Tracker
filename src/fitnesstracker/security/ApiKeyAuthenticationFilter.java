@@ -17,7 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-public class ApiKeyFilter extends OncePerRequestFilter {
+public class ApiKeyAuthenticationFilter extends OncePerRequestFilter {
     private final AuthenticationManager authenticationManager;
     private final RequestMatcher requestMatcher =
             new AntPathRequestMatcher("/api/tracker/**");
@@ -28,7 +28,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
         response.getWriter().write(authException.getMessage());
     });
 
-    public ApiKeyFilter(AuthenticationManager authenticationManager) {
+    public ApiKeyAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
 

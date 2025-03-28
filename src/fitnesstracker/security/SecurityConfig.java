@@ -31,7 +31,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/developers/signup").permitAll()
                         .anyRequest().authenticated()
                 )
-                .with(new ApiKeyConfigurer(), Customizer.withDefaults())
+                .with(new ApiKeyAuthenticationConfigurer(), Customizer.withDefaults())
                 .authenticationProvider(apiKeyAuthenticationProvider)
                 .userDetailsService(fitnessAppUserDetailsService)
                 .sessionManagement(sessions -> sessions

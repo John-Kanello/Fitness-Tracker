@@ -12,7 +12,8 @@ public class UserApplicationMapper implements ResponseMapper<UserApplication, Us
                 entity.getId(),
                 entity.getName(),
                 entity.getDescription(),
-                entity.getApiKey()
+                entity.getApiKey(),
+                entity.getApplicationCategory()
         );
     }
 }

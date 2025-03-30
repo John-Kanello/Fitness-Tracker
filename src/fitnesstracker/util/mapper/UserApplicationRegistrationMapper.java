@@ -18,7 +18,8 @@ public class UserApplicationRegistrationMapper implements
                 dtoRequest.name(),
                 dtoRequest.description(),
                 UUID.randomUUID().toString(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                dtoRequest.applicationCategory()
         );
     }
 
@@ -26,7 +27,8 @@ public class UserApplicationRegistrationMapper implements
     public UserApplicationRegistrationResponseDto toResponseDto(UserApplication entity) {
         return new UserApplicationRegistrationResponseDto(
                 entity.getName(),
-                entity.getApiKey()
+                entity.getApiKey(),
+                entity.getApplicationCategory()
         );
     }
 }

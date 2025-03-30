@@ -1,5 +1,6 @@
 package fitnesstracker.model.entity;
 
+import fitnesstracker.model.enums.ApplicationCategory;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,14 +23,20 @@ public class UserApplication {
     @Column(name = "api_key", unique = true)
     private String apiKey;
     private LocalDateTime registrationDate;
+    private ApplicationCategory applicationCategory;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private FitnessAppUser fitnessAppUser;
 
-    public UserApplication(String name, String description, String apiKey, LocalDateTime registrationDate) {
+    public UserApplication(String name,
+                           String description,
+                           String apiKey,
+                           LocalDateTime registrationDate,
+                           ApplicationCategory applicationCategory) {
         this.name = name;
         this.description = description;
         this.apiKey = apiKey;
         this.registrationDate = registrationDate;
+        this.applicationCategory = applicationCategory;
     }
 }

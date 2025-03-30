@@ -11,7 +11,7 @@ The **Fitness Tracker API** is a Spring Boot application that allows users to re
     - API Key Authentication for accessing `/api/tracker/**` endpoints.
 - **Application Categories**
     - Applications can be either **Basic** or **Premium**.
-    - Basic applications are limited to **1 request per second** for `/api/tracker` endpoints.
+    - Basic applications are limited to **1 request per second** for `/api/tracker` endpoints through a rate-limiter.
 - **RESTful API with H2 Database**
     - CRUD operations for users and fitness tracking data.
 

@@ -12,7 +12,7 @@ The **Fitness Tracker API** is a Spring Boot application that allows users to re
 - **Application Categories**
     - Applications can be either **Basic** or **Premium**.
     - Basic applications are limited to **1 request per second** for `/api/tracker` endpoints through a rate-limiter.
-- **RESTful API with H2 Database**
+- **RESTful API with MySQL Database**
     - CRUD operations for users and fitness tracking data.
 
 ---
@@ -22,7 +22,7 @@ The **Fitness Tracker API** is a Spring Boot application that allows users to re
 - **Java 21**
 - **Spring Boot 3.4.4**
 - **Spring Security** (Basic Auth, API Key Authentication)
-- **H2 Database** (In-memory for development)
+- **MySQL Database**
 - **IntelliJ IDEA** (Development Environment)
 
 ---
